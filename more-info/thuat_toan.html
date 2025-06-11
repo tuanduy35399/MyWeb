@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Các thuật toán cơ bản</title>
+    <link rel="stylesheet" href="./style.css"> 
+</head>
+<body>
+    <div class="container">
+        <center><h1><b><a href="../index.html" class="header">CHIA SẺ KIẾN THỨC IT</a></b></h1></center>
+        <button><p><a href="../index.html" class="header">Home</a></p></button>
+        <button><p><a href="./thuat_toan.html" class="header">Thuật toán</a></p></button>
+        <button><p><a href="./about.html" class="header">About</a></p></button>
+    <h2>Các thuật toán cơ bản</h2>
+        <h3><b>1. Selection Sort</b></h3>
+        <div style="text-indent: 30px;">
+            
+            <p><b>Selection Sort</b> là một thuật toán sắp xếp đơn giản, thuộc loại sắp xếp so sánh (comparison sort) và sắp xếp tại chỗ (in-place sort).</p> 
+            <p>
+                <b>Ý tưởng: </b>
+                Trong mỗi lượt lặp, thuật toán sẽ tìm kiếm phần tử nhỏ nhất (hoặc lớn nhất, tùy theo thứ tự sắp xếp mong muốn) trong phần mảng chưa được sắp xếp.
+                Sau khi tìm thấy, phần tử nhỏ nhất (hoặc lớn nhất) này sẽ được hoán đổi vị trí với phần tử đầu tiên của phần mảng chưa được sắp xếp.
+                Quá trình này lặp lại cho đến khi toàn bộ mảng được sắp xếp.
+                Thực tiễn: bạn tìm lá bài nhỏ nhất, đặt nó vào vị trí đầu tiên. Sau đó, bạn tìm lá bài nhỏ nhất trong số những lá còn lại, đặt nó vào vị trí thứ hai, và cứ thế tiếp tục.
+            </p>
+        </div>
+        <center><img src="/assets/img/2888f5b.png" alt="SelectionSort"/></center>
+        
+        <center>
+            <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/Iccmrk2ZWoc"
+                    frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+                </iframe>
+        </center>
+        <h4>Pesudocode:</h4>
+        <pre><code>
+            <b>
+                FUNCTION SelectionSort(arr, n):
+                    FOR i FROM 0 TO n-2:
+                        // Tìm phần tử nhỏ nhất trong phần mảng chưa được sắp xếp arr[i...n-1]
+                        min_index = i
+                        FOR j FROM i+1 TO n-1:
+                        IF arr[j] < arr[min_index]:
+                            min_index = j
+                        
+                        // Hoán đổi phần tử nhỏ nhất tìm được với phần tử ở vị trí hiện tại (arr[i])
+                        // Nếu min_index không phải là i (có nghĩa là đã tìm thấy một phần tử nhỏ hơn)
+                        IF min_index != i:
+                        SWAP(arr[i], arr[min_index]) // Hoán đổi giá trị của arr[i] và arr[min_index]
+        
+                    END FOR
+                END FUNCTION
+            </b>
+        </code></pre>
+        <h3>2. Insertion Sort</h3>
+       
+        <div style="text-indent: 30px;">
+            
+            <p><b>Insertion Sort</b> là một thuật toán sắp xếp đơn giản, hoạt động tương tự như cách bạn sắp xếp một bộ bài trên tay.</p>
+            <p>
+                <b>Ý tưởng:</b>
+                Nó chia mảng thành hai phần:
+                Phần đã sắp xếp (sorted part): Ban đầu chỉ chứa phần tử đầu tiên.
+                Phần chưa sắp xếp (unsorted part): Chứa các phần tử còn lại.
+                Thuật toán sẽ lần lượt lấy từng phần tử từ phần chưa sắp xếp và chèn (insert) nó vào đúng vị trí trong phần đã sắp xếp, sao cho phần đã sắp xếp vẫn luôn duy trì tính chất được sắp xếp.
+        
+                So sánh phần tử hiện tại với các phần tử phía trước nó.
+        
+                Dời các phần tử lớn hơn sang phải.
+        
+                Chèn phần tử hiện tại vào vị trí thích hợp.
+            </p>
+            
+        </div>
+        <center><img src="/assets/img/insertion Sort.webp" alt="InsertionSort"/></center>
+        <center>
+            <iframe width="560" height="315" 
+            src="https://www.youtube.com/embed/Q1JdRUh1_98" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+            </iframe>
+        </center>
+        <h4>Pesudocode: </h4>
+        <pre><code>
+            <b>
+                FUNCTION InsertionSort(arr, n):
+                    FOR i FROM 1 TO n-1:
+                        // Lấy phần tử hiện tại cần chèn
+                        current_element = arr[i]
+                        
+                        // Khởi tạo chỉ số của phần tử cuối cùng trong phần đã sắp xếp
+                        j = i - 1
+                        
+                        // Di chuyển các phần tử của arr[0...i-1] mà lớn hơn current_element
+                        // sang phải một vị trí để tạo chỗ trống cho current_element
+                        WHILE j >= 0 AND arr[j] > current_element:
+                        arr[j+1] = arr[j] // Dịch chuyển phần tử arr[j] sang phải
+                        j = j - 1         // Di chuyển sang trái để so sánh phần tử tiếp theo
+                        
+                        // Chèn current_element vào đúng vị trí của nó
+                        arr[j+1] = current_element
+                        
+                    END FOR
+                END FUNCTION 
+            </b>
+        </code></pre>
+        <button><a href="#">Trở lên đầu trang</a></button>
+        </div>
+</body>
+</html>
